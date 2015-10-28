@@ -8,14 +8,13 @@ class Route
     @controller_class, @action_name = controller_class, action_name
   end
 
-  # checks if pattern matches path and method matches request method
+  # Checks if pattern matches path and method matches request method
   def matches?(req)
     pattern =~ req.path &&
       http_method == req.request_method.downcase.to_sym
   end
 
-  # use pattern to pull out route params (save for later?)
-  # instantiate controller and call controller action
+  # Use pattern to pull out route params, instantiate controller and call action
   def run(req, res)
     match_data = pattern.match(req.path)
     route_params = {}
@@ -34,14 +33,13 @@ class Router
     @routes = []
   end
 
-  # simply adds a new route to the list of routes
+  # Adds a new route to the list of routes. Routes sourced from config/routes.rb
   def add_route(pattern, method, controller_class, action_name)
     @routes << Route.new(pattern, method, controller_class, action_name)
   end
 
   def get(pattern, controller_class, action_name)
     add_route(pattern, :get, controller_class, action_name)
-
   end
 
   # evaluate the proc in the context of the instance
@@ -54,25 +52,21 @@ class Router
     Regexp.new("^/#{regexp}$")
   end
 
-  # make each of these methods that
-  # when called add route
+  # Create methods for route creation -- also create route helper methods on call
   [:get, :post, :put, :delete].each do |http_method|
     define_method(http_method) do |pattern, controller_class, action_name|
       add_route(pattern, http_method, controller_class, action_name)
-      # Create Path Helper Method
+      # Create path helper method
       matcher = Regexp.new("^(?<class>.+)Controller$")
       class_name = matcher.match(controller_class.to_s)['class'].downcase
       RouteHelper.create_helper(action_name, class_name)
     end
-
   end
 
-  # should return the route that matches this request
   def match(req)
     @routes.find { |route| route.matches?(req) }
   end
 
-  # either throw 404 or call run on a matched route
   def run(req, res)
     route = match(req)
     if route
