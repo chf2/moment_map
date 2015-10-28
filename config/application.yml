@@ -1,0 +1,2 @@
+db_dbname: "mini_rails_demo"
+db_port: 5432
