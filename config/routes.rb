@@ -1,5 +1,6 @@
 require_relative '../lib/controller_base'
-require_relative '../app/controllers/cats_controller'
+require_relative '../app/controllers/api/moments_controller'
+require_relative '../app/controllers/static_pages_controller'
 require_relative '../lib/router'
 
 class AllRoutes

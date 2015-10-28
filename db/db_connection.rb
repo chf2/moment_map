@@ -5,7 +5,7 @@ class DBConnection < PG::Connection
   def initialize
     debugger
     super(
-      dbname: "mini_rails_demo",
+      dbname: "moment_map_development",
       port: 5432
     )
   end

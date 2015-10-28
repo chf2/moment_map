@@ -19,8 +19,6 @@ module RouteHelper
         id = obj_id.id unless obj_id.is_a?(Fixnum)
         "/#{class_name}/#{id}/edit"
       end
-    else
-      raise "Not a valid action name"
     end
   end
 end

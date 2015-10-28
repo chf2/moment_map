@@ -1,7 +1,7 @@
 require_relative '../../../lib/controller_base'
 require_relative '../../models/moment'
 
-class Api::MomentsController < ControllerBase
+class MomentsController < ControllerBase
   def index
     @moments = Moment.all
     # render json: @moments
