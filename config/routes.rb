@@ -10,7 +10,7 @@ class AllRoutes
 
   def run(router)
     router.draw do
-      get gen_rgx("^$"), StaticPagesController, :root
+      get gen_rgx(""), StaticPagesController, :root
       get gen_rgx("about"), StaticPagesController, :about
     end
   end

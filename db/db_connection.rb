@@ -3,7 +3,6 @@ require 'byebug'
 
 class DBConnection < PG::Connection
   def initialize
-    debugger
     super(
       dbname: "moment_map_development",
       port: 5432

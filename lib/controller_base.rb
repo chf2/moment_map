@@ -27,8 +27,6 @@ class ControllerBase
 
   def invoke_action(name)
     send(name)
-    # This is cool -- this is the auto render at end
-    # of a controller action. Won't call in case of redirect!
     unless already_built_response?
       render(name)
     end
