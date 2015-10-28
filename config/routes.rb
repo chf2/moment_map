@@ -9,13 +9,8 @@ class AllRoutes
 
   def run(router)
     router.draw do
-      get gen_rgx("cats"), CatsController, :index
-      post gen_rgx("cats"), CatsController, :create
-      get gen_rgx("cats/new"), CatsController, :new
-      get gen_rgx("cats/\d+"), CatsController, :show
-      put gen_rgx("cats/\d+"), CatsController, :update
-      delete gen_rgx("cats/\d+"), CatsController, :destroy
-      get gen_rgx("cats/\d+/edit"), CatsController, :edit
+      get gen_rgx("^$"), StaticPagesController, :root
+      get gen_rgx("about"), StaticPagesController, :about
     end
   end
 
