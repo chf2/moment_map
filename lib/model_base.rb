@@ -22,11 +22,6 @@ class ModelBase
     @columns = data.fields.map(&:to_sym)
   end
 
-  # Experimental -- includes
-  def self.prefetched_objects
-    @prefetched_objects ||= []
-  end
-
   def self.finalize!
     columns.each do |column|
       define_method(column) do

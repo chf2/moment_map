@@ -49,12 +49,6 @@ module Associatable
     assoc_options[name] = options
     define_method(name) do
       foreign_key_val = self.send(options.foreign_key)
-      self.class.prefetched_objects.each do |obj|
-        if obj.is_a?(options.model_class)
-          return obj if obj.id = foreign_key_val
-        end
-      end
-      puts "QUERY FIRED!"
       data = DB.execute(<<-SQL, foreign_key_val)
         SELECT
           *
