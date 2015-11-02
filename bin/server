@@ -1,17 +1,24 @@
 #!/usr/bin/env ruby
-
 require 'webrick'
+require 'rack'
+
 require_relative '../config/routes.rb'
 
 router = Router.new
 # Routes are drawn in config/routes.rb
 AllRoutes.new.run(router)
 
-PORT = ARGV[0] || 3000
-server = WEBrick::HTTPServer.new(Port: PORT)
-server.mount_proc('/') do |req, res|
-  route = router.run(req, res)
-end
+# PORT = ARGV[0] || 3000
+# server = WEBrick::HTTPServer.new(Port: PORT)
+# server.mount_proc('/') do |req, res|
+#   route = router.run(req, res)
+# end
 
-trap('INT') { server.shutdown }
-server.start
+class Application
+  def call(env)
+    req = Rack::Request.new(env)
+    res = Rack::Response.new
+    route = router.run(req, res)
+    res.finalize
+  end
+end

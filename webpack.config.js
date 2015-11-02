@@ -2,9 +2,9 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./frontend/moment_map_app.js.jsx",
+  entry: "./frontend/moment_map_app.jsx",
   output: {
-    path: "./frontend",
+    path: "./app/assets",
     filename: "bundle.js"
   },
   module: {
@@ -13,7 +13,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel'
-      },
+      }
     ]
   }
 };
