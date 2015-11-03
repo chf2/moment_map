@@ -2,15 +2,14 @@ require 'json'
 require 'webrick'
 
 class Session
-  # find the cookie for this app
-  # deserialize the cookie into a hash
+  # Find the cookie for this app's session and convert to Ruby hash
   def initialize(req)
-    req.cookies.each do |cookie|
-      if cookie.name == '_rails_lite_app_session'
-        @data = JSON.parse(cookie.value)
+    @data = {}
+    req.cookies.each do |name, value|
+      if name == '_chf-rack_app_session'
+        @data.merge(JSON.parse(cookie.value))
       end
     end
-    @data ||= {}
     @data["authenticity_token"] = SecureRandom.urlsafe_base64
   end
 
@@ -22,13 +21,7 @@ class Session
     @data[key] = val
   end
 
-  # Serialize hash into JSON and save in a WEBrick cookie, add to response cookies
   def store_session(res)
-    cookie = WEBrick::Cookie.new(
-      '_rails_lite_app_session', 
-      @data.to_json
-    )
-    cookie.path = "/"
-    res.cookies << cookie
+    res.set_cookie('_chf-rack_app_session', @stored_contents.to_json)
   end
 end

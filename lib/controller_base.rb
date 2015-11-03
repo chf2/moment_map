@@ -61,9 +61,6 @@ class ControllerBase
   def render_content(content, content_type)
     raise "page already rendered" if already_built_response?
     res.body = content
-    flash.each do |k, v|
-      res.body += [k, v].to_s
-    end
     res['content_type'] = content_type
     @already_built_response = true
     session.store_session(res)
