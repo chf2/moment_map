@@ -7,7 +7,7 @@ class Session
     @data = {}
     req.cookies.each do |name, value|
       if name == '_chf-rack_app_session'
-        @data.merge(JSON.parse(cookie.value))
+        @data.merge(JSON.parse(value))
       end
     end
     @data["authenticity_token"] = SecureRandom.urlsafe_base64
@@ -22,6 +22,6 @@ class Session
   end
 
   def store_session(res)
-    res.set_cookie('_chf-rack_app_session', @stored_contents.to_json)
+    res.set_cookie('_chf-rack_app_session', @data.to_json)
   end
 end

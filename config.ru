@@ -16,7 +16,7 @@ class Application
     req = Rack::Request.new(env)
     res = Rack::Response.new
     route = router.run(req, res)
-    res.finalize
+    res.finish
   end
 end
 

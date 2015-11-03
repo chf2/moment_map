@@ -60,7 +60,7 @@ class ControllerBase
 
   def render_content(content, content_type)
     raise "page already rendered" if already_built_response?
-    res.body = content
+    res.body = [content]
     res['content_type'] = content_type
     @already_built_response = true
     session.store_session(res)
