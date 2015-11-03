@@ -38,8 +38,8 @@ class ControllerBase
 
   def redirect_to(url)
     raise "page already rendered" if already_built_response?
-    res.header['location'] = url.to_s
-    res.status = 302
+    res['location'] = url.to_s
+    res['status'] = 302
     @already_built_response = true
     
     session.store_session(res)
@@ -64,7 +64,7 @@ class ControllerBase
     flash.each do |k, v|
       res.body += [k, v].to_s
     end
-    res.content_type = content_type
+    res['content_type'] = content_type
     @already_built_response = true
     session.store_session(res)
     flash.store_flash(res)

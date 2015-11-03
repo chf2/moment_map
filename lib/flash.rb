@@ -1,5 +1,6 @@
 require 'json'
 require 'webrick'
+require 'byebug'
 
 # Could implement a hash with indifferent access class here
 
@@ -7,13 +8,12 @@ class Flash
   attr_reader :contents
 
   def initialize(req)
-    req.cookies.each do |cookie|
-      if cookie.name == '_rails_lite_app_flash'
-        @contents = JSON.parse(cookie.value)
-        
+    @contents = {}
+    req.cookies.each do |name, value|
+      if name == '_rails_lite_app_flash'
+        @contents.merge(JSON.parse(value))
       end
     end
-    @contents ||= {}
     @stored_contents = {}
   end
 

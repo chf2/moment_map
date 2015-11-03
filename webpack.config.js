@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/moment_map_app.jsx",
   output: {
-    path: "./app/assets",
+    path: "./public",
     filename: "bundle.js"
   },
   module: {
