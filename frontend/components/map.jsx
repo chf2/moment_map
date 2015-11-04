@@ -1,5 +1,6 @@
 var React = require('react');
 var MomentStore = require('../stores/moment');
+var MomentForm = require('./moment_form');
 
 var Map = React.createClass({
   getInitialState: function () {
@@ -19,13 +20,14 @@ var Map = React.createClass({
   },
 
   handleMapClick: function (e) {
-    var latLng = e.latLng
+    var latLng = e.latLng;
     this.setState({
       clickedCoords: {
         lat: latLng.lat(),
         lng: latLng.lng()
-      });
-
+      },
+      formActive: true
+    });
   },
 
   componentWillUnmount: function () {
@@ -43,6 +45,13 @@ var Map = React.createClass({
         title: moment.author + ": " + moment.emotion
       });
     return marker;
+  },
+
+  formClosed: function () {
+    this.setState({
+      formActive: false,
+      clickedCoords: {}
+    });
   },
 
   updateMarkers: function () {
@@ -65,7 +74,13 @@ var Map = React.createClass({
   },
 
   render: function () {
-    return (<div id="map" ref="map"></div>);
+    var formModal = "";
+    if (this.state.formActive) {
+      formModal = (
+        <MomentForm coords={this.state.clickedCoords} close={this.formClosed} />
+      );
+    }
+    return (<div id="map" ref="map">{formModal}</div>);
   }
 });
 
