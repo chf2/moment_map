@@ -1,7 +1,7 @@
-var EventEmitter = require('event-emitter');
+var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var ACTION_DISPATCHED = "ACTION_DISPATCHED"
+var ACTION_DISPATCHED = "ACTION_DISPATCHED";
 var _numCallbacks = 0;
 
 var Dispatcher = assign({}, EventEmitter.prototype, {
@@ -11,7 +11,7 @@ var Dispatcher = assign({}, EventEmitter.prototype, {
     return _numCallbacks;
   },
 
-  dispatch: function () {
+  dispatch: function (payload) {
     this.emit(ACTION_DISPATCHED, payload);
   }
 });

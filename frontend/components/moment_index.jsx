@@ -31,8 +31,8 @@ var MomentIndex = React.createClass({
         <button onClick={this.fetch}>Fetch!</button>
         <ul>
           {
-            this.state.moments.map(function(moment){
-              return (<li>{moment}</li>);
+            this.state.moments.map(function(moment, i){
+              return (<li key={i}>{moment.author + " | " + moment.emotion}</li>);
             })
           }
         </ul>

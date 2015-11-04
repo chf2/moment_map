@@ -1,5 +1,5 @@
 var Dispatcher = require('../dispatcher/dispatcher');
-var EventEmitter = require('event-emitter');
+var EventEmitter = require('events').EventEmitter;
 var MomentConstants = require('../constants/moment_constants')
 var assign = require('object-assign');
 

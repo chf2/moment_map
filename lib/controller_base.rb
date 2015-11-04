@@ -1,4 +1,5 @@
 require_relative 'require_all'
+require 'json'
 
 class ControllerBase
   include RouteHelper
@@ -48,14 +49,20 @@ class ControllerBase
     nil
   end
 
-  def render(template_name)
-    view_directory = self.class.to_s.underscore[0..-12]
-    erb_template = File.read(
-      "app/views/#{view_directory}/#{template_name}.html.erb"
-    )
-    controller_binding = Kernel.binding
-    rendered_html = ERB.new(erb_template).result(controller_binding)
-    render_content(rendered_html, 'text/html')
+  def render(data)
+    # Currently JSON is the only non-HTML datatype supported
+    if data.is_a? Hash
+      render_content(data[:json].map(&:attributes).to_json, 'application/json')
+    else
+      template_name = data
+      view_directory = self.class.to_s.underscore[0..-12]
+      erb_template = File.read(
+        "app/views/#{view_directory}/#{template_name}.html.erb"
+      )
+      controller_binding = Kernel.binding
+      rendered_html = ERB.new(erb_template).result(controller_binding)
+      render_content(rendered_html, 'text/html')
+    end
   end
 
   def render_content(content, content_type)
