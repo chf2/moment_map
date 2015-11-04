@@ -20,6 +20,16 @@ var MomentStore = assign({}, EventEmitter.prototype, {
     this.on(MOMENT_CHANGE_EVENT, callback);
   },
 
+  findById: function (id) {
+    var foundMoment;
+    _moments.forEach(function(moment){
+      if (moment.id == id) {
+        foundMoment = moment;
+      }
+    });
+    return foundMoment;
+  },
+
   removeChangeListener: function (callback) {
     this.removeListener(MOMENT_CHANGE_EVENT, callback);
   },

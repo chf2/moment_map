@@ -1,12 +1,12 @@
 var MomentActions = require('../actions/moment_actions');
-var zepto = require('npm-zepto');
+var reqwest = require('reqwest');
 
 var ApiUtil = {
   fetchMoments: function () {
-    $.ajax({
+    reqwest({
       type: 'GET',
       url: 'api/moments',
-      dataType: 'json',
+      type: 'json',
       success: function (moments) {
         MomentActions.receiveMoments(moments);
       },

@@ -1,6 +1,7 @@
 var React = require('react');
 var ApiUtil = require('../util/api_util');
 var MomentStore = require('../stores/moment');
+var MomentIndexItem = require('./moment_index_item');
 
 var MomentIndex = React.createClass({
   fetch: function (e) {
@@ -32,7 +33,7 @@ var MomentIndex = React.createClass({
         <ul>
           {
             this.state.moments.map(function(moment, i){
-              return (<li key={i}>{moment.author + " | " + moment.emotion}</li>);
+              return (<MomentIndexItem key={i} moment={moment} />);
             })
           }
         </ul>

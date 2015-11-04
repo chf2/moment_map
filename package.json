@@ -8,10 +8,10 @@
     "babel-loader": "^5.3.2",
     "event-emitter": "^0.3.4",
     "events": "^1.1.0",
-    "npm-zepto": "^1.1.7",
     "object-assign": "^4.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.1",
+    "reqwest": "^2.0.5",
     "webpack": "^1.12.2"
   },
   "devDependencies": {},
