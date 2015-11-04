@@ -12,6 +12,7 @@ class AllRoutes
     router.draw do
       get gen_rgx(""), StaticPagesController, :root
       get gen_rgx("about"), StaticPagesController, :about
+      get gen_rgx("api/moments"), MomentsController, :index
     end
   end
 

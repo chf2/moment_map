@@ -1,10 +1,18 @@
-#main {
+#content-container {
   width: 1000px;
   text-align: center;
+  margin: 0 auto;
 }
 
 #map {
   height: 500px;
   width: 500px;
-  margin: 0 auto;
+  margin-right: 50px;
+}
+
+#moment-index {
+  height: 500px;
+  width: 445px;
+  border-left: 1px solid #E7E7E7;
+  padding-left: 50px;
 }
