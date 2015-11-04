@@ -8,11 +8,13 @@
   height: 500px;
   width: 500px;
   margin-right: 50px;
+  float: left;
 }
 
 #moment-index {
   height: 500px;
-  width: 445px;
+  width: 400px;
   border-left: 1px solid #E7E7E7;
-  padding-left: 50px;
+  padding-left: 45px;
+  float: left;
 }

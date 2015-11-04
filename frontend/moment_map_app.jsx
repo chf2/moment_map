@@ -7,7 +7,7 @@ var MyComponent = React.createClass({
   render: function () {
     return(
       <div id="content-container">
-        <h2>Hello World</h2>
+        <h1>Moment Map</h1>
         <Map />
         <MomentIndex />
       </div>

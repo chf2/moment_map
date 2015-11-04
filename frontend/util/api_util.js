@@ -3,7 +3,7 @@ var zepto = require('npm-zepto');
 
 var ApiUtil = {
   fetchMoments: function () {
-    zepto.$.ajax({
+    $.ajax({
       type: 'GET',
       url: 'api/moments',
       dataType: 'json',
