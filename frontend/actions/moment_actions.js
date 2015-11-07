@@ -7,6 +7,13 @@ var MomentActions = {
       actionType: MomentConstants.MOMENTS_RECEIVED,
       moments: moments
     });
+  },
+
+  receiveSingleMoment: function (moment) {
+    Dispatcher.dispatch({
+      actionType: MomentConstants.MOMENT_RECEIVED,
+      moment: moment
+    });
   }
 };
 

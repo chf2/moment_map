@@ -16,6 +16,7 @@ var MomentForm = React.createClass({
 
   createMoment: function (e) {
     e.preventDefault();
+    this.props.close();
     ApiUtil.createMoment(this.state);
   },
 

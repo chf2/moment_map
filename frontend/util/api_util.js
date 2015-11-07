@@ -4,7 +4,7 @@ var reqwest = require('reqwest');
 var ApiUtil = {
   fetchMoments: function () {
     reqwest({
-      type: 'GET',
+      method: 'GET',
       url: 'api/moments',
       type: 'json',
       success: function (moments) {
@@ -14,6 +14,21 @@ var ApiUtil = {
         debugger;
       }
     });
+  },
+
+  createMoment: function (moment) {
+    reqwest({
+      method: 'post',
+      url: 'api/moments',
+      type: 'json',
+      data: moment,
+      success: function (moment) {
+        MomentActions.receiveSingleMoment(moment);
+      },
+      error: function (response) {
+        debugger
+      }
+    })
   }
 };
 

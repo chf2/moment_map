@@ -9,6 +9,10 @@ var resetMoments = function (moments) {
   _moments = moments;
 };
 
+var addMoment = function (moment) {
+  _moments.push(moment);
+};
+
 var MOMENT_CHANGE_EVENT = "MOMENT_CHANGE_EVENT";
 
 var MomentStore = assign({}, EventEmitter.prototype, {
@@ -35,9 +39,15 @@ var MomentStore = assign({}, EventEmitter.prototype, {
   },
 
   dispatcherId: Dispatcher.register(function(payload){
-    if (payload.actionType === MomentConstants.MOMENTS_RECEIVED) {
+    switch (payload.actionType) {
+    case MomentConstants.MOMENTS_RECEIVED:
       resetMoments(payload.moments);
       MomentStore.emit(MOMENT_CHANGE_EVENT);
+      break;
+    case MomentConstants.MOMENT_RECEIVED:
+      addMoment(payload.moment);
+      MomentStore.emit(MOMENT_CHANGE_EVENT);
+      break;
     }
   })
 });
