@@ -57,9 +57,15 @@ ul {
   border: 1px solid black;
   font-size: 20px;
   width: 300px;
-  height: 400px;
+  height: 200px;
   top: 50%;
   left: 50%;
+  padding: 20px 10px;
   text-align: center;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.modal-content input, .modal-content textarea {
+  width: 80%;
+  margin-top: 5px;
 }

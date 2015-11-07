@@ -8,6 +8,7 @@ class MomentsController < ControllerBase
   end
 
   def create
+    @moment = Moment.new(params['moment'])
     @moment.save
     render json: @moment
   end

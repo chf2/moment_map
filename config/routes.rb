@@ -13,6 +13,7 @@ class AllRoutes
       get gen_rgx(""), StaticPagesController, :root
       get gen_rgx("about"), StaticPagesController, :about
       get gen_rgx("api/moments"), MomentsController, :index
+      post gen_rgx("api/moments"), MomentsController, :create
     end
   end
 

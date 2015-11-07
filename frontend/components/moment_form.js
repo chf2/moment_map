@@ -1,5 +1,6 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
+var ApiUtil = require('../util/api_util')
 
 var MomentForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -16,8 +17,8 @@ var MomentForm = React.createClass({
 
   createMoment: function (e) {
     e.preventDefault();
-    this.props.close();
-    ApiUtil.createMoment(this.state);
+    this.props.closeForm();
+    ApiUtil.createMoment({ moment: this.state });
   },
 
   updateBody: function (e) {
@@ -51,7 +52,7 @@ var MomentForm = React.createClass({
 
             <textarea 
               name="moment-body" 
-              onChange={this.updateBody}>{this.state.body}</textarea>
+              valueLink={this.linkState('body')}></textarea>
 
             <br></br>
 

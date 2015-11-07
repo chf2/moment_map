@@ -77,10 +77,15 @@ var Map = React.createClass({
     var formModal = "";
     if (this.state.formActive) {
       formModal = (
-        <MomentForm coords={this.state.clickedCoords} close={this.formClosed} />
+        <MomentForm coords={this.state.clickedCoords} closeForm={this.formClosed} />
       );
     }
-    return (<div id="map" ref="map">{formModal}</div>);
+    return (
+      <div>
+        <div>{formModal}</div>
+        <div id="map" ref="map"></div>
+      </div>
+      );
   }
 });
 
