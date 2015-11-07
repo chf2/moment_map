@@ -52,7 +52,11 @@ class ControllerBase
   def render(data)
     # Currently JSON is the only non-HTML datatype supported
     if data.is_a? Hash
-      render_content(data[:json].map(&:attributes).to_json, 'application/json')
+      if data[:json].respond_to?(:map)
+        render_content(data[:json].map(&:attributes).to_json, 'application/json')
+      else
+        render_content(data[:json].attributes.to_json, 'application/json')
+      end
     else
       template_name = data
       view_directory = self.class.to_s.underscore[0..-12]

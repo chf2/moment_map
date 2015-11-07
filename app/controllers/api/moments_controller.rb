@@ -1,5 +1,6 @@
 require_relative '../../../lib/controller_base'
 require_relative '../../models/moment'
+require_relative '../../helpers/datetime_helper'
 
 class MomentsController < ControllerBase
   def index
@@ -8,7 +9,8 @@ class MomentsController < ControllerBase
   end
 
   def create
-    @moment = Moment.new(params['moment'])
+    @moment = Moment.new(req.params['moment'])
+    @moment.created_at = Time.now.to_datetime
     @moment.save
     render json: @moment
   end
