@@ -14,14 +14,9 @@ class Route
       http_method == req.request_method.downcase.to_sym
   end
 
-  # Use pattern to pull out route params, instantiate controller and call action
+  # Instantiate controller and call action
   def run(req, res)
-    match_data = pattern.match(req.path)
-    route_params = {}
-    match_data.names.each do |name|
-      route_params[name] = match_data[name]
-    end
-    @controller_class.new(req, res, route_params).invoke_action(action_name)
+    @controller_class.new(req, res).invoke_action(action_name)
   end
 end
 
@@ -42,8 +37,7 @@ class Router
     add_route(pattern, :get, controller_class, action_name)
   end
 
-  # evaluate the proc in the context of the instance
-  # for syntactic sugar :)
+  # Evaluate the proc in the context of the instance. Used to draw routes
   def draw(&proc)
     instance_eval(&proc)
   end
@@ -56,7 +50,7 @@ class Router
   [:get, :post, :put, :delete].each do |http_method|
     define_method(http_method) do |pattern, controller_class, action_name|
       add_route(pattern, http_method, controller_class, action_name)
-      # Create path helper method
+      # Create path helper method. Generally not used for API resources
       matcher = Regexp.new("^(?<class>.+)Controller$")
       class_name = matcher.match(controller_class.to_s)['class'].downcase
       RouteHelper.create_helper(action_name, class_name)

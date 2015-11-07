@@ -1,4 +1,3 @@
-require_relative './params'
 require_relative './session'
 require_relative './flash'
 require_relative './route_helper'
