@@ -15,6 +15,11 @@ var MomentForm = React.createClass({
     });
   },
 
+  cancel: function (e) {
+    e.preventDefault();
+    this.props.closeForm();
+  },
+
   createMoment: function (e) {
     e.preventDefault();
     this.props.closeForm();
@@ -40,11 +45,10 @@ var MomentForm = React.createClass({
 
             <br></br>
 
-            <label htmlFor="moment-emotion">How you felt:</label><br></br>
+            <label htmlFor="moment-emotion">I felt </label>
             <input 
               type="text" 
               name="moment-emotion" 
-              placeholder="how did you feel in the moment?"
               valueLink={this.linkState('emotion')}>
             </input>
 
@@ -52,11 +56,13 @@ var MomentForm = React.createClass({
 
             <textarea 
               name="moment-body" 
-              valueLink={this.linkState('body')}></textarea>
+              valueLink={this.linkState('body')}
+              placeholder="Tell us about it!"></textarea>
 
             <br></br>
 
             <input type="submit" value="Submit"></input>
+            <button onClick={this.cancel}>Cancel</button>
 
           </form>
         </div>

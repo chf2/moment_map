@@ -104,8 +104,8 @@ class ModelBase
   end
 
   def update
-    set_str = self.class.columns.map do |col|
-      "#{col} = ?"
+    set_str = self.class.columns.map.with_index do |col, idx|
+      "#{col} = $#{idx + 1}"
     end.join(", ")
     
     DB.execute_params(<<-SQL, attribute_values)

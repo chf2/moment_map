@@ -16,6 +16,7 @@ var Map = React.createClass({
     };
     this.map = new google.maps.Map(map, mapOptions);
     this.map.addListener('click', this.handleMapClick);
+    this.map.addListener('idle', this.updateBounds);
   },
 
   handleMapClick: function (e) {
@@ -53,6 +54,24 @@ var Map = React.createClass({
     });
   },
 
+  updateBounds: function () {
+    var boundsObj = this.map.getBounds();
+    var northEast = boundsObj.getNorthEast();
+    var southWest = boundsObj.getSouthWest();
+    var bounds = 
+      {
+        northEast: { 
+          lat: northEast.lat(), 
+          lng: northEast.lng() 
+        },
+        southWest: {
+          lat: southWest.lat(),
+          lng: southWest.lng()
+        }
+      };
+    this.props.update({ bounds: bounds });
+  },
+
   updateMarkers: function () {
     var moments = this.props.moments;
     var seenIds = [];
@@ -64,6 +83,8 @@ var Map = React.createClass({
         seenIds.push(this.markers[i].momentId);
       }
     }
+    // Remove nulls
+    this.markers = this.markers.filter(function(marker){ return marker }); 
 
     moments.forEach(function(moment){
       if (seenIds.indexOf(moment.id) !== -1) { return; }
@@ -76,7 +97,9 @@ var Map = React.createClass({
     var formModal = "";
     if (this.state.formActive) {
       formModal = (
-        <MomentForm coords={this.state.clickedCoords} closeForm={this.formClosed} />
+        <MomentForm 
+          coords={this.state.clickedCoords} 
+          closeForm={this.formClosed} />
       );
     }
     return (
@@ -84,7 +107,7 @@ var Map = React.createClass({
         <div>{formModal}</div>
         <div id="map" ref="map"></div>
       </div>
-      );
+    );
   }
 });
 

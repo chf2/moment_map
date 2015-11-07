@@ -4,19 +4,26 @@ require_relative '../../helpers/datetime_helper'
 
 class MomentsController < ControllerBase
   def index
-    @moments = Moment.all
+    @moments = Moment.filtered(params['filters'])
     render json: @moments
   end
 
   def create
-    @moment = Moment.new(req.params['moment'])
+    @moment = Moment.new(params['moment'])
     @moment.created_at = Time.now.to_datetime
     @moment.save
     render json: @moment
   end
 
   def show
-    @moment = Moment.find(req.params['id'])
+    @moment = Moment.find(params['id'])
     render json: @moment
+  end
+
+  private
+
+  def params
+    # Params are fetched from the Rack::Request object
+    req.params
   end
 end

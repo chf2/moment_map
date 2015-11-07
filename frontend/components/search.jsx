@@ -2,10 +2,12 @@ var React = require('react');
 var MomentIndex = require('./moment_index');
 var MomentStore = require('../stores/moment');
 var Map = require('./map');
+var ApiUtil = require('../util/api_util');
+var assign = require('object-assign');
 
 var Search = React.createClass({
   getInitialState: function () {
-    return ({ moments: [] });
+    return ({ moments: [], params: {} });
   },
 
   componentDidMount: function () {
@@ -20,11 +22,20 @@ var Search = React.createClass({
     this.setState({ moments: MomentStore.all() });
   },
 
+  updateParams: function (newParams) {
+    this.setState(
+      { params: assign({}, this.state.params, newParams) },
+      function () {
+        ApiUtil.fetchMoments(this.state.params);
+      }
+    );
+  },
+
   render: function () {
     return(
       <div id="search-container">
-        <Map moments={this.state.moments} />
-        <MomentIndex moments={this.state.moments} />
+        <Map moments={this.state.moments} update={this.updateParams} />
+        <MomentIndex moments={this.state.moments} update={this.updateParams} />
       </div>
     );
   }

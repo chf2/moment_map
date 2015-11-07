@@ -1,4 +1,5 @@
 require_relative '../../lib/controller_base'
+require_relative '../models/moment'
 
 class StaticPagesController < ControllerBase
   def root

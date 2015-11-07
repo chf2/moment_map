@@ -2,15 +2,17 @@ var MomentActions = require('../actions/moment_actions');
 var reqwest = require('reqwest');
 
 var ApiUtil = {
-  fetchMoments: function () {
+  fetchMoments: function (params) {
     reqwest({
       method: 'GET',
       url: 'api/moments',
+      data: { filters: params },
       type: 'json',
       success: function (moments) {
         MomentActions.receiveMoments(moments);
       },
       error: function (response) {
+        console.log("Sorry, something went wrong!");
         debugger;
       }
     });
@@ -26,6 +28,7 @@ var ApiUtil = {
         MomentActions.receiveSingleMoment(moment);
       },
       error: function (response) {
+        console.log("Sorry, something went wrong!");
         debugger
       }
     })
