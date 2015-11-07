@@ -13,15 +13,20 @@ ul {
   height: 500px;
   width: 500px;
   margin-right: 50px;
+  margin-top: 30px;
   float: left;
+  border-left: 1px solid #E7E7E7;
+  border-bottom: 1px solid #E7E7E7;
+  box-shadow: -2px 2px 1px #E7E7E7;
 }
 
 #moment-index {
-  height: 500px;
+  height: 550px;
   width: 400px;
   border-left: 1px solid #E7E7E7;
   padding-left: 45px;
   float: left;
+  overflow-y: scroll;
 }
 
 #moment-index > ul {

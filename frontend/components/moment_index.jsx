@@ -13,18 +13,6 @@ var MomentIndex = React.createClass({
     return({ moments: [] });
   },
 
-  _changed: function () {
-    this.setState({ moments: MomentStore.all() });
-  },
-
-  componentDidMount: function () {
-    MomentStore.addChangeListener(this._changed);
-  },
-
-  componentWillUnmount: function () {
-    MomentStore.removeChangeListener(this._changed);
-  },
-
   render: function () {
     return(
       <div id="moment-index">
@@ -32,7 +20,7 @@ var MomentIndex = React.createClass({
         <button onClick={this.fetch}>Fetch!</button>
         <ul>
           {
-            this.state.moments.map(function(moment, i){
+            this.props.moments.map(function(moment, i){
               return (<MomentIndexItem key={i} moment={moment} />);
             })
           }

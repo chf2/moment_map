@@ -2,7 +2,6 @@ require_relative '../db/db_connection'
 require_relative './associatable'
 require_relative './searchable'
 require 'active_support/inflector'
-require 'byebug'
 
 DB = DBConnection.new
 
@@ -93,7 +92,6 @@ class ModelBase
     raise "No columns to insert into" if cols.length < 2
     col_names = cols.drop(1).join(", ")
     val_string = (1...cols.length).map { |num| "$#{num}" }.join(", ")
-    debugger
     data = DB.execute_params(<<-SQL, attribute_values.drop(1))
       INSERT INTO
         #{self.class.table_name} (#{col_names})

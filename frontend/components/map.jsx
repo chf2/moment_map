@@ -16,7 +16,6 @@ var Map = React.createClass({
     };
     this.map = new google.maps.Map(map, mapOptions);
     this.map.addListener('click', this.handleMapClick);
-    MomentStore.addChangeListener(this.updateMarkers);
   },
 
   handleMapClick: function (e) {
@@ -30,8 +29,8 @@ var Map = React.createClass({
     });
   },
 
-  componentWillUnmount: function () {
-    MomentStore.removeChangeListener(this.updateMarkers);
+  componentDidUpdate: function () {
+    this.updateMarkers();
   },
 
   createMarker: function (moment) {
@@ -55,7 +54,7 @@ var Map = React.createClass({
   },
 
   updateMarkers: function () {
-    var moments = MomentStore.all();
+    var moments = this.props.moments;
     var seenIds = [];
     for(var i = 0; i < this.markers.length; i++) {
       if (!MomentStore.findById(this.markers[i].momentId)) {

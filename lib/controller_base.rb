@@ -4,10 +4,9 @@ require 'json'
 class ControllerBase
   include RouteHelper
   include ViewHelper
-  attr_reader :params, :res, :req
+  attr_reader :res, :req
 
-  def initialize(req, res, route_params = {})
-    @params = Params.new(req, route_params)
+  def initialize(req, res)
     @req, @res = req, res
     @already_built_response = false
   end
