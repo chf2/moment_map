@@ -34,8 +34,8 @@ var MomentForm = React.createClass({
     return(
       <div className='modal-screen'>
         <div className='modal-content'>
-          <form onSubmit={this.createMoment}>
-            <label htmlFor="moment-author">Name:</label><br></br>
+          <form onSubmit={this.createMoment} className="clearfix">
+            <label htmlFor="moment-author">Name:</label>
             <input 
               type="text" 
               name="moment-author"
@@ -46,11 +46,13 @@ var MomentForm = React.createClass({
             <br></br>
 
             <label htmlFor="moment-emotion">I felt </label>
-            <input 
-              type="text" 
-              name="moment-emotion" 
-              valueLink={this.linkState('emotion')}>
-            </input>
+            <select id='moment-emotion' valueLink={this.linkState("emotion")}>
+              {
+                window.EMOTIONS.map(function (emotion, i) {                                      
+                  return <option value={emotion} key={i}>{emotion}</option>
+                })
+              }
+            </select>
 
             <br></br>
 

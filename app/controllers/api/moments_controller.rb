@@ -15,11 +15,6 @@ class MomentsController < ControllerBase
     render json: @moment
   end
 
-  def show
-    @moment = Moment.find(params['id'])
-    render json: @moment
-  end
-
   private
 
   def params

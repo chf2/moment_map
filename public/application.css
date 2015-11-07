@@ -60,7 +60,8 @@ ul {
   background: white;
   border-radius: 5px;
   border: 1px solid black;
-  font-size: 20px;
+  line-height: 20px;
+  font-size: 16px;
   width: 300px;
   height: 200px;
   top: 50%;
@@ -70,7 +71,19 @@ ul {
   transform: translateX(-50%) translateY(-50%);
 }
 
-.modal-content input, .modal-content textarea {
-  width: 80%;
+.modal-content input, .modal-content textarea, .modal-content select {
+  width: 70%;
   margin-top: 5px;
+  float: right;
+  line-height: 20px;
+}
+
+.modal-conent label {
+  display: inline;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
