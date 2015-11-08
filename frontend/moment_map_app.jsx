@@ -6,10 +6,13 @@ var MyComponent = React.createClass({
   render: function () {
     return(
       <div id="content-container">
-        <h1>Moment Map</h1>
+        <div className="header">
+          <h1>Moment Map</h1>
+          <span>| Built on chf-rack. <a href="/about">Learn more.</a></span>
+        </div>
         <Search />
       </div>
-    )
+    );
   }
 });
 

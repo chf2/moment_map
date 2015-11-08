@@ -34,12 +34,13 @@ var MomentForm = React.createClass({
     return(
       <div className='modal-screen'>
         <div className='modal-content'>
+          <span className="form-header">Create a new moment</span>
           <form onSubmit={this.createMoment} className="clearfix">
-            <label htmlFor="moment-author">Name:</label>
+            <label htmlFor="moment-author">Name </label>
             <input 
               type="text" 
               name="moment-author"
-              placeholder="what's your name?"
+              placeholder="What's your name?"
               valueLink={this.linkState('author')}>
             </input>
 
@@ -63,9 +64,12 @@ var MomentForm = React.createClass({
 
             <br></br>
 
-            <input type="submit" value="Submit"></input>
-            <button onClick={this.cancel}>Cancel</button>
-
+            <input 
+              className="form-button" 
+              type="submit" 
+              value="Create Moment">
+            </input>
+            <button className="form-button" onClick={this.cancel}>Cancel</button>
           </form>
         </div>
       </div>

@@ -105,7 +105,7 @@ var Map = React.createClass({
     return (
       <div className='map-container'>
         <div>{formModal}</div>
-        Click on the map to record a new moment!
+        Click on the map to create a new moment!
         <div id="map" ref="map"></div>
       </div>
     );

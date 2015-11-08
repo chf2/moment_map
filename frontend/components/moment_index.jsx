@@ -14,10 +14,10 @@ var MomentIndex = React.createClass({
     }
 
     return(
-      <div id="moment-index">
+      <div id="moment-index-container">
         <h3>Moments Nearby</h3>
         <div className="moment-search">
-          <label htmlFor="moment-search-select">Filter Moments:</label>
+          <label htmlFor="moment-search-select">Filter Moments: </label>
           <select id='moment-emotion' onChange={this.updateSelection}>
             <option value={'All'}>All</option>
             {
@@ -27,14 +27,16 @@ var MomentIndex = React.createClass({
             }
           </select>
         </div>
-        {noMomentsFound}
-        <ul>
-          {
-            this.props.moments.map(function(moment){
-              return (<MomentIndexItem key={moment.id} moment={moment} />);
-            })
-          }
-        </ul>
+        <div id="moment-index">
+          {noMomentsFound}
+          <ul className="moment-list">
+            {
+              this.props.moments.map(function(moment){
+                return (<MomentIndexItem key={moment.id} moment={moment} />);
+              })
+            }
+          </ul>
+        </div>
       </div>
     );
   }
