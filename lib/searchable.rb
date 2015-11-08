@@ -5,7 +5,7 @@ require 'byebug'
 module Searchable
   def where(query_params, *values)
     # Query params can either be passed as a hash or as a SQL string
-    if query_params.first.is_a? Hash
+    if query_params.is_a? Hash
       params = query_params
     else
       # If a SQL string, set as key and set passed values as value

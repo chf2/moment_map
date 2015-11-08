@@ -7,7 +7,7 @@ var assign = require('object-assign');
 
 var Search = React.createClass({
   getInitialState: function () {
-    return ({ moments: [], params: {} });
+    return ({ moments: [], params: { emotion: 'All' } });
   },
 
   componentDidMount: function () {

@@ -13,7 +13,6 @@ var ApiUtil = {
       },
       error: function (response) {
         console.log("Sorry, something went wrong!");
-        debugger;
       }
     });
   },
@@ -29,7 +28,6 @@ var ApiUtil = {
       },
       error: function (response) {
         console.log("Sorry, something went wrong!");
-        debugger
       }
     })
   }

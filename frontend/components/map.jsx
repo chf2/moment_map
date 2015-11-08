@@ -77,7 +77,7 @@ var Map = React.createClass({
     var seenIds = [];
     for(var i = 0; i < this.markers.length; i++) {
       if (!MomentStore.findById(this.markers[i].momentId)) {
-        this.markers[i].map = null;
+        this.markers[i].setMap(null);
         this.markers[i] = null;
       } else {
         seenIds.push(this.markers[i].momentId);
@@ -103,9 +103,9 @@ var Map = React.createClass({
       );
     }
     return (
-      <div>
+      <div className='map-container'>
         <div>{formModal}</div>
-        "Click on the map to record a new moment!"
+        Click on the map to record a new moment!
         <div id="map" ref="map"></div>
       </div>
     );
