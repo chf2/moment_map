@@ -1,1 +1,1 @@
-web: npm install && bundle exec rackup config.ru -s thin -p $PORT
+web: bundle exec rackup config.ru -s thin -p $PORT
