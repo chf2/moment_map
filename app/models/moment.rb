@@ -2,7 +2,7 @@ require_relative '../../lib/model_base.rb'
 
 
 class Moment < ModelBase
-  EMOTIONS = ['Happy', 'Sad', 'Angry', 'Tired', 'Content', 'Hungry', 'Scared']
+  EMOTIONS = ['Happy', 'Sad', 'Angry', 'Content', 'Excited', 'Afraid']
 
   def self.filtered(filters)
     bounds = filters['bounds']

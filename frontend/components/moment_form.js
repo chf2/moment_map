@@ -8,7 +8,7 @@ var MomentForm = React.createClass({
   getInitialState: function () {
     return({
       author: '',
-      emotion: '',
+      emotion: 'Happy',
       body: '',
       lat: this.props.coords.lat,
       lng: this.props.coords.lng
@@ -60,7 +60,7 @@ var MomentForm = React.createClass({
             <textarea 
               name="moment-body" 
               valueLink={this.linkState('body')}
-              placeholder="Tell us about it!"></textarea>
+              placeholder="Tell the world about it!"></textarea>
 
             <br></br>
 

@@ -27,19 +27,18 @@ ul {
 
 #moment-index-container {
   float: left;
-  border-bottom: 1px solid #E7E7E7;
   height: 525px;
 }
 
 #moment-index {
-  height: 425px;
+  height: 440px;
   width: 400px;
   padding: 5px 15px;
   overflow-y: auto;
 }
 
 #moment-index-container > h3 {
-  margin-top: 5px;
+  margin-top: 0;
   margin-bottom: 8px;
 }
 
@@ -53,15 +52,40 @@ ul {
 
 .moment-list { 
   border: 1px solid black;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .moment-index-item {
   border-bottom: 1px solid black;
-  padding: 10px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 18px;
+  height: 46px;
+  overflow: auto;
+}
+
+.moment-index-item:hover {
+  cursor: pointer;
 }
 
 .moment-index-item:last-child {
   border-bottom: none;
+}
+
+.moment-index-item-detail {
+  width: 40%;
+}
+
+.moment-index-item-body {
+  text-align: left;
+  width: 60%;
+}
+
+.moment-index-item > div {
+  float: left;
+  padding: 5px 0px;
+  overflow-y: scroll;
 }
 
 .moment-index-item > p {
@@ -90,7 +114,7 @@ ul {
   height: 160px;
   top: 40%;
   left: 50%;
-  padding: 20px 10px;
+  padding: 15px 10px;
   text-align: center;
   transform: translateX(-50%) translateY(-50%);
 }
@@ -107,7 +131,7 @@ ul {
 }
 
 .modal-content select {
-  width: 87%;
+  width: 88%;
 }
 
 .modal-content textarea {
@@ -134,6 +158,8 @@ ul {
   clear: both;
 }
 
+/* Header details */
+
 .header {
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -152,23 +178,59 @@ h1 {
   top: -1px;
 }
 
-.header > span > a {
+a {
   text-decoration: none;
   color: #000099;
 }
 
-.header > span > a:hover {
+a:hover {
   text-decoration: underline;
 }
+
+/* About page */
 
 #about-main {
   width: 500px;
   position: relative;
-  top: -10px;
+  top: -40px;
   left: 10%;
   padding: 30px 40px;
 }
 
+#about-main h3 {
+  margin-top: 30px;
+  margin-bottom: 8px;
+}
+
 #about-main p {
+  margin-top: 8px;
   text-align: justify;
 }
+
+/* Color Handling */
+
+.moment-index-item.emotion-happy:hover {
+  background-color: #00EE00;
+}
+
+.moment-index-item.emotion-sad:hover {
+  background-color: #0000D4;
+  color: white;
+}
+
+.moment-index-item.emotion-angry:hover {
+  background-color: #E62E00;
+}
+
+.moment-index-item.emotion-content:hover {
+  background-color: #FFFF66;
+}
+
+.moment-index-item.emotion-excited:hover {
+  background-color: #74D1FF;
+}
+
+.moment-index-item.emotion-afraid:hover {
+  background-color: #F47A00;
+}
+

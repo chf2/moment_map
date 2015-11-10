@@ -8,7 +8,7 @@ var MyComponent = React.createClass({
       <div id="content-container">
         <div className="header">
           <h1>Moment Map</h1>
-          <span>| Built on chf-rack. <a href="/about">Learn more.</a></span>
+          <span>| Built on chf-webr. <a href="/about">Learn more.</a></span>
         </div>
         <Search />
       </div>
