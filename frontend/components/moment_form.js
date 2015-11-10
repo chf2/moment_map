@@ -46,7 +46,7 @@ var MomentForm = React.createClass({
 
             <br></br>
 
-            <label htmlFor="moment-emotion">I felt </label>
+            <label htmlFor="moment-emotion">I feel </label>
             <select id='moment-emotion' valueLink={this.linkState("emotion")}>
               {
                 window.EMOTIONS.map(function (emotion, i) {                                      

@@ -8,3 +8,4 @@ gem "activesupport"
 gem "pg"
 gem "rack"
 gem 'thin'
+gem 'newrelic_rpm'
