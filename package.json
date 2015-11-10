@@ -15,9 +15,13 @@
     "reqwest": "^2.0.5",
     "webpack": "^1.12.2"
   },
+  "engines": {
+    "node": "0.12.3",
+    "npm": "2.10.0"
+  },
   "devDependencies": {},
   "scripts": {
-    "start": "webpack && rackup"
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "keywords": [],
   "author": "",

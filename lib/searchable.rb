@@ -1,6 +1,5 @@
 require_relative '../db/db_connection'
 require 'active_support/inflector'
-require 'byebug'
 
 module Searchable
   def where(query_params, *values)

@@ -1,6 +1,5 @@
 require 'json'
 require 'webrick'
-require 'byebug'
 
 class Flash
   attr_reader :contents
