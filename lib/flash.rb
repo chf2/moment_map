@@ -7,7 +7,7 @@ class Flash
   def initialize(req)
     @contents = {}
     req.cookies.each do |name, value|
-      if name == '_chf-webr_app_flash'
+      if name == '_chf-go_app_flash'
         @contents.merge(JSON.parse(value))
       end
     end
@@ -43,6 +43,6 @@ class Flash
   end
 
   def store_flash(res)
-    res.set_cookie('_chf-webr_app_flash', @stored_contents.to_json)
+    res.set_cookie('_chf-go_app_flash', @stored_contents.to_json)
   end
 end

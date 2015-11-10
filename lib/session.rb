@@ -6,7 +6,7 @@ class Session
   def initialize(req)
     @data = {}
     req.cookies.each do |name, value|
-      if name == '_chf-webr_app_session'
+      if name == '_chf-go_app_session'
         @data.merge(JSON.parse(value))
       end
     end
@@ -22,6 +22,6 @@ class Session
   end
 
   def store_session(res)
-    res.set_cookie('_chf-webr_app_session', @data.to_json)
+    res.set_cookie('_chf-go_app_session', @data.to_json)
   end
 end
