@@ -9,7 +9,7 @@ class Application
   def initialize
     @router = Router.new
     # Routes are drawn in config/routes.rb
-    AllRoutes.new.run(router)
+    AllRoutes.run(router)
   end
   
   def call(env)
