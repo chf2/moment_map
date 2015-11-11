@@ -1,4 +1,4 @@
-require_relative '../db/db_connection'
+require_relative '../../db/db_connection'
 require 'active_support/inflector'
 
 module Searchable
