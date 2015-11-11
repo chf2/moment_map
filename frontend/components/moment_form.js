@@ -1,6 +1,6 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var ApiUtil = require('../util/api_util')
+var MomentActions = require('../actions/moment_actions')
 
 var MomentForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -23,7 +23,7 @@ var MomentForm = React.createClass({
   createMoment: function (e) {
     e.preventDefault();
     this.props.closeForm();
-    ApiUtil.createMoment({ moment: this.state });
+    MomentActions.createMoment({ moment: this.state });
   },
 
   updateBody: function (e) {

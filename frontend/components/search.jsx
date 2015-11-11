@@ -2,7 +2,7 @@ var React = require('react');
 var MomentIndex = require('./moment_index');
 var MomentStore = require('../stores/moment');
 var Map = require('./map');
-var ApiUtil = require('../util/api_util');
+var MomentActions = require('../actions/moment_actions');
 var assign = require('object-assign');
 
 var Search = React.createClass({
@@ -26,7 +26,7 @@ var Search = React.createClass({
     this.setState(
       { params: assign({}, this.state.params, newParams) },
       function () {
-        ApiUtil.fetchMoments(this.state.params);
+        MomentActions.fetchMoments(this.state.params);
       }
     );
   },

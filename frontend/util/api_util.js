@@ -1,4 +1,4 @@
-var MomentActions = require('../actions/moment_actions');
+var ApiActions = require('../actions/api_actions');
 var reqwest = require('reqwest');
 
 var ApiUtil = {
@@ -9,7 +9,7 @@ var ApiUtil = {
       data: { filters: params },
       type: 'json',
       success: function (moments) {
-        MomentActions.receiveMoments(moments);
+        ApiActions.receiveMoments(moments);
       },
       error: function (response) {
         console.log("Sorry, something went wrong!");
@@ -24,7 +24,7 @@ var ApiUtil = {
       type: 'json',
       data: moment,
       success: function (moment) {
-        MomentActions.receiveSingleMoment(moment);
+        ApiActions.receiveSingleMoment(moment);
       },
       error: function (response) {
         console.log("Sorry, something went wrong!");
