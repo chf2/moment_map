@@ -3,8 +3,11 @@ require 'pg'
 class DBConnection < PG::Connection
   def initialize
     super(
-      dbname: "moment_map_development",
+      host: ENV['HEROKU_DB_HOST'],
+      dbname: ENV['HEROKU_DB_NAME'],
       port: 5432,
+      user: ENV['HEROKU_DB_USER'],
+      password: ENV['HEROKU_DB_PASSWORD']
     )
   end
 
