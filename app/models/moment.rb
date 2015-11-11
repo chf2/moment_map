@@ -1,4 +1,4 @@
-require_relative '../../lib/model_base.rb'
+require_relative '../../lib/model/model_base'
 
 
 class Moment < ModelBase

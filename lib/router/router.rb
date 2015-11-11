@@ -21,7 +21,6 @@ class Route
 end
 
 class Router
-  include RouteHelper
   attr_reader :routes
 
   def initialize

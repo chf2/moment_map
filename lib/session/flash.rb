@@ -1,5 +1,4 @@
 require 'json'
-require 'webrick'
 
 class Flash
   attr_reader :contents

@@ -1,5 +1,4 @@
 require 'json'
-require 'webrick'
 
 class Session
   # Find the cookie for this app's session and convert to Ruby hash

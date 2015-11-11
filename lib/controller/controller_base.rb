@@ -1,4 +1,11 @@
-require_relative 'require_all'
+require_relative '../session/session'
+require_relative '../session/flash'
+require_relative '../router/route_helper'
+require_relative './view_helper'
+require 'active_support'
+require 'active_support/core_ext'
+require 'active_support/inflector'
+require 'erb'
 require 'json'
 
 class ControllerBase
