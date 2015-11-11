@@ -7,15 +7,14 @@ var MomentActions = {
     ApiUtil.createMoment(moment);
     Dispatcher.dispatch({
       actionType: MomentConstants.MOMENT_CREATED,
-      moment: moments
+      moment: moment
     });
   },
 
   fetchMoments: function (params) {
     ApiUtil.fetchMoments(params);
     Dispatcher.dispatch({
-      actionType: MomentConstants.MOMENTS_FETCHED,
-      moments: moments
+      actionType: MomentConstants.MOMENTS_FETCHED
     });
   }
 
