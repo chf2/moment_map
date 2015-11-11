@@ -5,9 +5,9 @@ class DBConnection < PG::Connection
     super(
       host: ENV['HEROKU_DB_HOST'],
       dbname: ENV['HEROKU_DB_NAME'],
-      port: 5432,
       user: ENV['HEROKU_DB_USER'],
-      password: ENV['HEROKU_DB_PASSWORD']
+      password: ENV['HEROKU_DB_PASSWORD'],
+      port: 5432
     )
   end
 

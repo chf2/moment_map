@@ -17,6 +17,15 @@ var Map = React.createClass({
     this.map = new google.maps.Map(map, mapOptions);
     this.map.addListener('click', this.handleMapClick);
     this.map.addListener('idle', this.updateBounds);
+    MomentStore.addPinListener(this.updateActivePin);
+  },
+
+  componentDidUpdate: function () {
+    this.updateMarkers();
+  },
+
+  componentWillUnmount: function () {
+    MomentStore.removePinListener(this.updateActivePin);
   },
 
   handleMapClick: function (e) {
@@ -28,10 +37,6 @@ var Map = React.createClass({
       },
       formActive: true
     });
-  },
-
-  componentDidUpdate: function () {
-    this.updateMarkers();
   },
 
   createMarker: function (moment) {
@@ -51,6 +56,17 @@ var Map = React.createClass({
     this.setState({
       formActive: false,
       clickedCoords: {}
+    });
+  },
+
+  updateActivePin: function () {
+    var activePin = MomentStore.getActivePin();
+    this.markers.forEach(function(marker){
+      if (marker.momentId === activePin) {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      } else if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      }
     });
   },
 

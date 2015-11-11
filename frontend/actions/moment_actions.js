@@ -16,8 +16,14 @@ var MomentActions = {
     Dispatcher.dispatch({
       actionType: MomentConstants.MOMENTS_FETCHED
     });
-  }
+  },
 
+  togglePinBounce: function (id) {
+    Dispatcher.dispatch({
+      actionType: MomentConstants.TOGGLE_PIN_BOUNCE,
+      id: id
+    });
+  },
 };
 
 module.exports = MomentActions;
