@@ -1,6 +1,5 @@
 require_relative '../../../lib/controller/controller_base'
 require_relative '../../models/moment'
-require_relative '../../helpers/datetime_helper'
 
 class MomentsController < ControllerBase
   def index
