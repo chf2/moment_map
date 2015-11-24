@@ -1,4 +1,4 @@
 #!/bin/bash
 # Resets the seed data for the application in production
 
-cat moments.sql | heroku pg:psql --app moment-map DATABASE
+cat db/moments.sql | heroku pg:psql --app moment-map DATABASE
