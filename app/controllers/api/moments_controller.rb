@@ -10,7 +10,7 @@ class MomentsController < ControllerBase
 
   def create
     @moment = Moment.new(params['moment'])
-    @moment.created_at = Time.now.to_datetime
+    @moment.created_at = Time.now.to_date
     @moment.save
     render json: @moment
   end
